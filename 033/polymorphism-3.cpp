@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+    class base
+    {
+    public:
+        virtual void vir_func()
+        {
+            cout << "virtual function, this is class base" << endl;
+        }
+        void func()
+        {
+            cout << "normal function, this is class base" << endl;
+        }
+    };
+
+    class A: public base
+    {
+    public:
+        virtual void vir_func()
+        {
+            cout << "virtual function, this is class A" << endl;
+        }
+        void func()
+        {
+            cout << "normal function, this is class A" << endl;
+        }
+    };
+
+    class B: public base
+    {
+    public:
+        virtual void vir_func()
+        {
+            cout << "virtual function, this is class B" << endl;
+        }
+        void func()
+        {
+            cout << "normal function, this is class B" << endl;
+        }
+    };
+
+    base *Base = new(base);
+    base *a = new(A);
+    base *b = new(B);
+
+    Base->func();
+    a->func();
+    b->func();
+
+    cout << "#########################################" << endl;
+
+    Base->vir_func();
+    a->vir_func();
+    b->vir_func();
+
+    cout << "#########################################" << endl;
+
+    ((A *)b)->vir_func();
+    ((A *)b)->func();
+
+    return 0;
+}

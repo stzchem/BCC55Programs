@@ -1,0 +1,16 @@
+#include <iostream>
+#include <windows.h>
+
+using namespace std;
+
+int main()
+{
+    int a = 1;
+    while (a)
+    {
+        cout << "欢迎来到菜鸟教程！" << endl;
+        Sleep(1);
+    }
+    system("pause");
+    return 0;
+}
