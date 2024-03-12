@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main()
+{
+    long a,b,c;
+	int s,i,sum=0;
+	scanf("%d",&s);
+	b=a=1;
+	for(i=1;i<=s;i++)
+	{
+		c=b+a;
+		sum+=c/b;
+		a=b;
+		b=c;	
+	}
+		
+	printf("sum=%d",sum);
+	
+    return 0;
+}

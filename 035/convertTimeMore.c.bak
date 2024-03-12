@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+void convertTime(int,int,int,int);    /*申明时间转换函数*/
+
+int main()
+{
+	int hour,min,sec;               /*定义3个变量用来存放时、分、秒*/
+	int deltaSec;                    /*定义1个变量用来存放增加的秒数*/
+	
+	scanf("%d:%d:%d %d",&hour,&min,&sec,&deltaSec); 
+	convertTime(hour,min,sec,deltaSec);     /*调用时间转换函数*/
+	
+	return 0;
+}
+
+void convertTime(int hh,int mm,int ss,int ds)    /*定义或实现时间转换函数*/
+{
+	printf("%.2d:%.2d:%.2d\n",hh,mm,ss);
+	
+	ds%=24*60*60;                                /*增加的秒数与24小时的秒数整除求余数——化成24小时内的秒数*/
+	hh+=ds/(60*60);                              /*相除取整，将24小时内的秒数化成增加的小时数*/
+	ds%=60*60;                                   /*求余数，将24小时内的秒数化成1小时内的秒数*/
+	mm+=ds/60;                                   /*相除取整，将1小时内的秒数化成增加的分钟数*/
+	ds%=60;                                      /*求余数，将1小时内的秒数化成1分钟内的秒数*/
+	
+	ss+=ds;
+	if(ss>=60)                                  /*增加的秒数超过60s则加1min*/
+	{
+		++mm;                    
+		ss-=60;
+	}
+	if(mm>=60)
+	{
+		++hh;
+		mm-=60;
+	}
+	if(hh>=24)
+	{
+		hh-=24;
+	}
+	printf("%.2d:%.2d:%.2d\n",hh,mm,ss);
+}
+	
+	
+	
